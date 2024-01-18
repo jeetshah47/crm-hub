@@ -15,3 +15,9 @@
     --background-end-rgb: 0, 0, 0;
   }
 }
+
+@media (min-width: 1580px) {
+  body {
+    /* font-size: 85% !important; */
+  }
+}

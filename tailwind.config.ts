@@ -15,7 +15,9 @@ const config: Config = {
       },
       colors: {
         'secondary': '#7D8592',
-        'white-back': "#F4F9FD"
+        'white-back': "#F4F9FD",
+        'primary-blue': '#3F8CFF',
+        'low-blue': "#F4F9FD"
       }
     },
   },
