@@ -1,6 +1,6 @@
 "use client";
-import InputBox from "@/app/auth/common/Input/InputBox";
-import OtpBox from "@/app/auth/common/Input/OtpBox";
+import InputBox from "@/app/components/common/Input/InputBox";
+import OtpBox from "@/app/components/common/Input/OtpBox";
 import React, { useState } from "react";
 import { Icon } from "@iconify/react";
 export const PhoneForm = () => {

@@ -1,7 +1,7 @@
 import React from "react";
-import Illustration from "./components/illustration";
-import LoginForm from "./components/login-form";
-import Col from "./components/Col";
+import Col from "../../components/Login/Col";
+import Illustration from '../../components/Login/illustration';
+import LoginForm from '../../components/Login/login-form';
 
 const UserLogin = () => {
   return (
