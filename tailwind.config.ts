@@ -17,7 +17,11 @@ const config: Config = {
         'secondary': '#7D8592',
         'white-back': "#F4F9FD",
         'primary-blue': '#3F8CFF',
-        'low-blue': "#F4F9FD"
+        'low-blue': "#F4F9FD",
+        'shallow-black':"#0A1629"
+      },
+      backgroundColor: {
+        'permanent': "#F4F9FD"
       }
     },
   },
