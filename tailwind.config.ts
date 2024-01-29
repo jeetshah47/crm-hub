@@ -21,7 +21,8 @@ const config: Config = {
         'shallow-black':"#0A1629"
       },
       backgroundColor: {
-        'permanent': "#F4F9FD"
+        'permanent': "#F4F9FD",
+        'blue-chalk': "#E6EDF5"
       }
     },
   },

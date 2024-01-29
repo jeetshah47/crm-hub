@@ -24,7 +24,7 @@ const Dashboard = () => {
           <div className="flex flex-1 justify-between py-4">
             <p className="font-bold">Jobs</p>
             <Link
-              href={"/app/dashboard/events"}
+              href={"/app/jobs"}
               className="text-primary-blue font-semibold"
             >
               View All
