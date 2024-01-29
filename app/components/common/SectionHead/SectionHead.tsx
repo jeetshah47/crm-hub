@@ -19,7 +19,7 @@ const SectionHead = ({title, buttonPress, buttonText, filter, filterComponent}: 
       {/* Add Fitler */}
       <div></div>
       <div>
-        <Button text="View Events" />
+        <Button text={buttonText} onClick={buttonPress} />
       </div>
     </div>
   );
