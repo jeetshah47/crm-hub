@@ -13,7 +13,7 @@ export default function AppLayout({ children }: AppLayoutProps) {
       </div>
       <div className="col-span-10 py-4 px-8">
         <Header />
-        <div className="py-2 mt-14">{children}</div>
+        <div className="py-2">{children}</div>
       </div>
     </div>
   );

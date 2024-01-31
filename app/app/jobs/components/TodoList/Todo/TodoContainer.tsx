@@ -62,6 +62,9 @@ const TodoContainer = () => {
 
   const handleAllowDrop = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
+    console.log("drag eixt");
+    
+    
   };
 
   const handleOnDrop = (e: React.DragEvent<HTMLDivElement>) => {
@@ -82,12 +85,22 @@ const TodoContainer = () => {
     cloneItemList.push(cloneElement);
 
     setItemList(cloneItemList);
-    // let dropElement = cloneItemList.
-
     console.log("current box id", e.currentTarget.id);
 
     console.log(data);
   };
+
+  const handleDragEnter = (e: React.DragEvent<HTMLDivElement>) => {
+    console.log("drag over", e.currentTarget.id);
+    e.currentTarget.classList.add('bg-modal')
+    e.currentTarget.classList.add('bg-opacity-15')
+  }
+  const handleDragExit = (e: React.DragEvent<HTMLDivElement>) => {
+    console.log("drag exit", e.currentTarget.id);
+    e.currentTarget.classList.remove('bg-modal')
+    e.currentTarget.classList.remove('bg-opacity-15')
+  }
+
 
   return (
     <div className="grid grid-cols-4 gap-6">
@@ -96,6 +109,7 @@ const TodoContainer = () => {
           key={title.type}
           onDragOver={handleAllowDrop}
           onDrop={handleOnDrop}
+         
           className="h-full space-y-4  scroll-shrink "
           id={title.type}
         >
