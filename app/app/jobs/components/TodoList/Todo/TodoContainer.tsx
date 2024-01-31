@@ -90,42 +90,42 @@ const TodoContainer = () => {
   };
 
   return (
-      <div className="grid grid-cols-4 gap-6 h-[460px] absolute overflow-auto">
-        {Progress.map((title) => (
-          <div
-            key={title.type}
-            onDragOver={handleAllowDrop}
-            onDrop={handleOnDrop}
-            className="h-full space-y-4 overflow-auto scroll-shrink"
-            id={title.type}
-          >
-            <div className="pb-10">
-              <div
-                className={`border-4 bg-low-blue border-solid border-white  rounded-3xl py-2 px-2 w-48 text-center `}
-              >
-                <p className="font-bold">{title.label}</p>
-              </div>
+    <div className="grid grid-cols-4 gap-6">
+      {Progress.map((title) => (
+        <div
+          key={title.type}
+          onDragOver={handleAllowDrop}
+          onDrop={handleOnDrop}
+          className="h-full space-y-4  scroll-shrink "
+          id={title.type}
+        >
+          <div className="">
+            <div
+              className={`border-4 bg-low-blue border-solid border-white  rounded-3xl py-2 px-2 w-48 text-center `}
+            >
+              <p className="font-bold">{title.label}</p>
             </div>
-            {itemList
-              .filter((items) => items.type === title.type)
-              .map((value) => (
-                <div
-                  key={value.id}
-                  id={value.id.toString()}
-                  draggable={true}
-                  onDragStart={handleDrag}
-                  onDrag={handleOnDrag}
-                  onDragEnd={handleEndDrag}
-                  className="bg-white rounded-3xl w-48 p-5"
-                >
-                  <p className="text-secondary">TS000015</p>
-                  <p>{value.data}</p>
-                  <p>{value.type}</p>
-                </div>
-              ))}
           </div>
-        ))}
-      </div>
+          {itemList
+            .filter((items) => items.type === title.type)
+            .map((value) => (
+              <div
+                key={value.id}
+                id={value.id.toString()}
+                draggable={true}
+                onDragStart={handleDrag}
+                onDrag={handleOnDrag}
+                onDragEnd={handleEndDrag}
+                className="bg-white rounded-3xl w-48 p-5"
+              >
+                <p className="text-secondary">TS000015</p>
+                <p>{value.data}</p>
+                <p>{value.type}</p>
+              </div>
+            ))}
+        </div>
+      ))}
+    </div>
   );
 };
 

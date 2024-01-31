@@ -12,11 +12,12 @@ body {
   background-color: #f4f9fd;
 }
 
-.scroll-shrink {
-  &::-webkit-scrollbar {
-    width: 1px;
-  }
+
+::-webkit-scrollbar {
+  width: 1px;
 }
+
+
 
 @media (prefers-color-scheme: dark) {
   :root {

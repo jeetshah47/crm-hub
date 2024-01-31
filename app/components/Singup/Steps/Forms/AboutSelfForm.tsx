@@ -1,6 +1,6 @@
 "use client";
 import InputBox from "@/app/components/common/Input/InputBox";
-import React, { useState } from "react";
+import React, { HTMLAttributes, useState } from "react";
 import { ServiceOptions, ProfessionOption } from "./mocks/MockData";
 import SelectBox from "@/app/components/common/Input/SelectBox";
 
@@ -11,12 +11,14 @@ const AboutSelfForm = () => {
     personal: false,
   });
 
-  const handleServiceSelection = (value: string) => {
-    setInterest({ ...interest, service: value });
+  const handleServiceSelection = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setInterest({ ...interest, service: e.target.value });
   };
- 
-  const handleProfessionSelection = (value: string) => {
-    setInterest({ ...interest, profession: value });
+
+  const handleProfessionSelection = (
+    e: React.ChangeEvent<HTMLSelectElement>
+  ) => {
+    setInterest({ ...interest, profession: e.target.value });
   };
 
   return (
@@ -24,7 +26,7 @@ const AboutSelfForm = () => {
       <form>
         <div className="py-2">
           <SelectBox
-            Options={ServiceOptions}
+            options={ServiceOptions}
             label="Why will you use the service?"
             onChange={handleServiceSelection}
             value={interest.service}
@@ -32,7 +34,7 @@ const AboutSelfForm = () => {
         </div>
         <div className="py-2">
           <SelectBox
-            Options={ProfessionOption}
+            options={ProfessionOption}
             label="What describes you best?"
             onChange={handleProfessionSelection}
             value={interest.profession}
