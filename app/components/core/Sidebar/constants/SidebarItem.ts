@@ -7,32 +7,32 @@ export const SidebarItems = [
     },
     {
         icon: "basil:stack-solid",
-        title: "Projects",
+        title: "jobs",
         id: 2,
-        path: "/projects"
+        path: "/jobs"
     },
-    {
-        icon: "iconamoon:calendar-1-fill",
-        title: "Calendar",
-        id: 3,
-        path: "/calendar"
-    },
-    {
-        icon: "ph:folder-open-fill",
-        title: "Info Portal",
-        id: 4,
-        path: "/info"
-    },
-    {
-        icon: "streamline:user-multiple-group-solid",
-        title: "Employees",
-        id: 5,
-        path: "/employees"
-    },
-    {
-        icon: "ph:chats-circle-fill",
-        title: "Messenger",
-        id: 6,
-        path: "/messenger"
-    },
+    // {
+    //     icon: "iconamoon:calendar-1-fill",
+    //     title: "Calendar",
+    //     id: 3,
+    //     path: "/calendar"
+    // },
+    // {
+    //     icon: "ph:folder-open-fill",
+    //     title: "Info Portal",
+    //     id: 4,
+    //     path: "/info"
+    // },
+    // {
+    //     icon: "streamline:user-multiple-group-solid",
+    //     title: "Employees",
+    //     id: 5,
+    //     path: "/employees"
+    // },
+    // {
+    //     icon: "ph:chats-circle-fill",
+    //     title: "Messenger",
+    //     id: 6,
+    //     path: "/messenger"
+    // },
 ]

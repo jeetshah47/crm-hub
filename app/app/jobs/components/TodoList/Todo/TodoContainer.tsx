@@ -63,8 +63,6 @@ const TodoContainer = () => {
   const handleAllowDrop = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     console.log("drag eixt");
-    
-    
   };
 
   const handleOnDrop = (e: React.DragEvent<HTMLDivElement>) => {
@@ -92,15 +90,14 @@ const TodoContainer = () => {
 
   const handleDragEnter = (e: React.DragEvent<HTMLDivElement>) => {
     console.log("drag over", e.currentTarget.id);
-    e.currentTarget.classList.add('bg-modal')
-    e.currentTarget.classList.add('bg-opacity-15')
-  }
+    e.currentTarget.classList.add("bg-modal");
+    e.currentTarget.classList.add("bg-opacity-15");
+  };
   const handleDragExit = (e: React.DragEvent<HTMLDivElement>) => {
     console.log("drag exit", e.currentTarget.id);
-    e.currentTarget.classList.remove('bg-modal')
-    e.currentTarget.classList.remove('bg-opacity-15')
-  }
-
+    e.currentTarget.classList.remove("bg-modal");
+    e.currentTarget.classList.remove("bg-opacity-15");
+  };
 
   return (
     <div className="grid grid-cols-4 gap-6">
@@ -109,15 +106,14 @@ const TodoContainer = () => {
           key={title.type}
           onDragOver={handleAllowDrop}
           onDrop={handleOnDrop}
-         
           className="h-full space-y-4  scroll-shrink "
           id={title.type}
         >
           <div className="">
             <div
-              className={`border-4 bg-low-blue border-solid border-white  rounded-3xl py-2 px-2 w-48 text-center `}
+              className={`rounded-3xl py-2 px-2 w-48 text-center bg-opacity-15 ${title.style}`}
             >
-              <p className="font-bold">{title.label}</p>
+              <p className={`font-bold`}>{title.label}</p>
             </div>
           </div>
           {itemList

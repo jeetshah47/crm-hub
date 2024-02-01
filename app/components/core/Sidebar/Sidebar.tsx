@@ -12,7 +12,7 @@ const Sidebar = () => {
       <ul className="w-full">
         {SidebarItems.map((item) => (
           <Link
-            href={item.path}
+            href={"/app" + item.path}
             key={item.id}
             className={`flex items-center rounded-md px-8 gap-4 font-semibold text-lg py-3 hover:bg-primary-blue hover:bg-opacity-10 hover:text-primary-blue ${
               pathname.includes(item.path) &&

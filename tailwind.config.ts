@@ -19,14 +19,17 @@ const config: Config = {
         "primary-blue": "#3F8CFF",
         "low-blue": "#F4F9FD",
         "shallow-black": "#0A1629",
+        "primary-green": "#00D097",
+        "electric-violet": "#C418E6",
       },
       backgroundColor: {
         permanent: "#F4F9FD",
         "blue-chalk": "#E6EDF5",
-        'modal': "#2155A3"
+        modal: "#2155A3",
+        "white-ice": "#E0F9F2",
       },
     },
   },
-  plugins: []
+  plugins: [],
 };
 export default config;
