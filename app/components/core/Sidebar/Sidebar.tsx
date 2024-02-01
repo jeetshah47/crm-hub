@@ -8,7 +8,7 @@ const Sidebar = () => {
   const pathname = usePathname();
 
   return (
-    <div className="h-full fixed grid grid-cols-1 justify-items-center py-4 px-4 text-secondary bg-white rounded-3xl ">
+    <div className="h-full fixed grid grid-cols-1 justify-items-center py-4 px-4 text-secondary bg-white rounded-3xl drop-shadow-md">
       <ul className="w-full">
         {SidebarItems.map((item) => (
           <Link

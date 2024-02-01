@@ -100,13 +100,13 @@ const TodoContainer = () => {
   };
 
   return (
-    <div className="grid grid-cols-4 gap-6">
+    <div className="grid grid-cols-4 gap-6 min-h-96">
       {Progress.map((title) => (
         <div
           key={title.type}
           onDragOver={handleAllowDrop}
           onDrop={handleOnDrop}
-          className="h-full space-y-4  scroll-shrink "
+          className="h-full space-y-4 scroll-shrink"
           id={title.type}
         >
           <div className="">
@@ -126,7 +126,7 @@ const TodoContainer = () => {
                 onDragStart={handleDrag}
                 onDrag={handleOnDrag}
                 onDragEnd={handleEndDrag}
-                className="bg-white rounded-3xl w-48 p-5"
+                className="bg-white rounded-3xl w-48 p-5 drop-shadow-md"
               >
                 <p className="text-secondary">TS000015</p>
                 <p>{value.data}</p>

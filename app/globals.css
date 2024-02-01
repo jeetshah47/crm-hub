@@ -12,12 +12,9 @@ body {
   background-color: #f4f9fd;
 }
 
-
 ::-webkit-scrollbar {
   width: 1px;
 }
-
-
 
 @media (prefers-color-scheme: dark) {
   :root {
