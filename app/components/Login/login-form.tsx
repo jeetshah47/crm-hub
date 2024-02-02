@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { HTMLAttributes, useState } from "react";
 
 const LoginForm = () => {
   const [user, setUser] = useState({ email: "", password: "" });
@@ -7,6 +7,25 @@ const LoginForm = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log(user);
+    JSON.stringify({ email: user.email, password: user.password });
+    handleLoginApi();
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setUser({ ...user, [e.target.id]: e.target.value });
+  };
+
+  const handleLoginApi = async () => {
+    try {
+      const res = await fetch(`http://localhost:3000/api/auth/login`, {
+        method: "POST",
+        body: JSON.stringify({ email: user.email, password: user.password }),
+      });
+
+      console.log(await res.json());
+    } catch (error) {
+      console.log("error");
+    }
   };
 
   return (
@@ -20,13 +39,20 @@ const LoginForm = () => {
               <input
                 placeholder="youremail@gmail.com"
                 className="outline-none px-4 py-2 rounded-lg w-full border-2"
+                value={user.email}
+                onChange={handleChange}
+                id="email"
               />
             </div>
             <div className="font-semibold space-y-3 py-4 w-full">
               <p className="text-sm">Password</p>
               <input
-                placeholder="youremail@gmail.com"
+                placeholder="*****"
                 className="outline-none px-4 py-2 rounded-lg w-full border-2"
+                id="password"
+                type="password"
+                value={user.password}
+                onChange={handleChange}
               />
             </div>
             <div className="flex">
