@@ -19,11 +19,34 @@ model User {
 }
 
 model Jobs {
-  id          String @id @default(uuid())
+  id          String     @id @default(uuid())
   name        String
-  type        String
+  status      String
   priority    Int
   description String
   userId      String
-  user        User   @relation(fields: [userId], references: [id])
+  user        User       @relation(fields: [userId], references: [id])
+  payments    Payments[]
+  tast        Task[]
 }
+
+model Task {
+  id     String @id @default(uuid())
+  jobId  String
+  job    Jobs   @relation(fields: [jobId], references: [id])
+  detail String
+  width  Float
+  height Float
+  rate   Float
+}
+
+
+model Payments {
+  id     String @id @default(uuid())
+  jobId  String
+  job    Jobs   @relation(fields: [jobId], references: [id])
+  detail String
+  method String
+  Amount Float
+}
+
