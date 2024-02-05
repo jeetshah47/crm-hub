@@ -7,6 +7,19 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum Status {
+  pending
+  inprogress
+  inreview
+  done
+}
+
+enum Priority {
+  high
+  medium
+  low
+}
+
 model User {
   id         String   @id @default(uuid())
   email      String   @unique
@@ -21,8 +34,8 @@ model User {
 model Jobs {
   id          String     @id @default(uuid())
   name        String
-  status      String
-  priority    Int
+  status      Status?     @default(pending)
+  priority    Priority   @default(low)
   description String
   userId      String
   user        User       @relation(fields: [userId], references: [id])
@@ -40,13 +53,18 @@ model Task {
   rate   Float
 }
 
-
 model Payments {
-  id     String @id @default(uuid())
-  jobId  String
-  job    Jobs   @relation(fields: [jobId], references: [id])
-  detail String
-  method String
-  Amount Float
+  id        String              @id @default(uuid())
+  jobId     String
+  job       Jobs                @relation(fields: [jobId], references: [id])
+  remainder RemainderPayments[]
+  detail    String
+  method    String
+  Amount    Float
 }
 
+model RemainderPayments {
+  id        String   @id @default(uuid())
+  paymentId String
+  payments  Payments @relation(fields: [paymentId], references: [id])
+}
