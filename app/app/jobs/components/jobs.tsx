@@ -5,7 +5,8 @@ import SectionHead from "@/app/components/common/SectionHead/SectionHead";
 import React, { useState } from "react";
 import TodoList from "./TodoList/Todo/todo-list";
 import Modal from "@/app/components/common/Modal/Modal";
-import Jobform from "./TodoList/AddJob/Jobform";
+import TaskForm from "./TodoList/AddJob/TaskForm";
+import JobForm from "./JobCard/JobForm";
 
 const Jobs = () => {
   const [showModal, setShowModal] = useState(false);
@@ -20,11 +21,12 @@ const Jobs = () => {
       <TodoList />
       <Modal
         display={showModal}
-        title="Add Task"
-        buttonText="Save Task"
+        title="Add Job"
+        buttonText="Save Job"
         buttonAction={setShowModal}
       >
-        <Jobform />
+        {/* <TaskForm /> */}
+        <JobForm />
       </Modal>
     </div>
   );
