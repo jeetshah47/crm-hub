@@ -7,27 +7,28 @@ import TodoList from "./TodoList/Todo/todo-list";
 import Modal from "@/app/components/common/Modal/Modal";
 import TaskForm from "./TodoList/AddJob/TaskForm";
 import JobForm from "./JobCard/JobForm";
+import { useRouter } from "next/navigation";
 
 const Jobs = () => {
   const [showModal, setShowModal] = useState(false);
-  // const handle
+  const router = useRouter();
   const handleShowAddModal = () => {
-    setShowModal(true);
+    router.push(`/app/jobs/add-job`)
   }
 
   return (
-    <div>
+    <div className="">
       <SectionHead title="Jobs" buttonText="Add Jobs" buttonPress={handleShowAddModal} />
       <TodoList />
-      <Modal
+      {/* <Modal
         display={showModal}
         title="Add Job"
         buttonText="Save Job"
         buttonAction={setShowModal}
       >
-        {/* <TaskForm /> */}
+        <TaskForm />
         <JobForm />
-      </Modal>
+      </Modal> */}
     </div>
   );
 };
