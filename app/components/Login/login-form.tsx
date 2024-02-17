@@ -1,13 +1,14 @@
 "use client";
+import { signIn } from "next-auth/react";
 import React, { HTMLAttributes, useState } from "react";
 
 const LoginForm = () => {
   const [user, setUser] = useState({ email: "", password: "" });
+  const [error, setError] = useState("");
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log(user);
-    JSON.stringify({ email: user.email, password: user.password });
     handleLoginApi();
   };
 
@@ -17,12 +18,17 @@ const LoginForm = () => {
 
   const handleLoginApi = async () => {
     try {
-      const res = await fetch(`http://localhost:3000/api/auth/login`, {
-        method: "POST",
-        body: JSON.stringify({ email: user.email, password: user.password }),
+      const signinResult = await  signIn("credentials", {
+        email: user.email,
+        password: user.password,
+        redirect: false,
       });
-
-      console.log(await res.json());
+      if(signinResult?.ok) {
+        console.log("Success",signinResult); 
+      }
+      if(signinResult?.error) {
+        console.log("Error",signinResult);
+      }
     } catch (error) {
       console.log("error");
     }
@@ -55,6 +61,7 @@ const LoginForm = () => {
                 onChange={handleChange}
               />
             </div>
+            {error && <span className="text-red-500">{error}</span>}
             <div className="flex">
               <div className="flex-1">
                 <input type="checkbox" />

@@ -10,14 +10,24 @@ export async function POST(req: Request) {
     const user = await prisma.user.findFirst({
       where: {
         email: email,
-        password: password,
       },
     });
-
-    if (user == null) {
-      return Response.json({ data: null, message: "User not found !!" });
+    if (user) {
+      const data = await prisma.user.findFirst({
+        where: {
+          email: email,
+          password: password,
+        },
+      });
+      if (data == null) {
+        return Response.json({ data: null, message: "Invalid Email/Password" });
+      }
+      return Response.json({ data: data, message: "User Found !!" });
     }
-    return Response.json({ data: user, message: "User Found !!" });
+
+    else  {
+      return Response.json({data: null, message: "User not found"});
+    }
   } catch (error) {
     return Response.json({ messsage: "error" });
   }
