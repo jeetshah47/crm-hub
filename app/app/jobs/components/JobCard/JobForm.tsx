@@ -28,7 +28,9 @@ const JobForm = () => {
     },
   ];
 
-  const handleOnChange = () => {};
+  const handleOnChange = () => {
+    
+  };
 
   const dateFormat = () => {
     const localDate = new Date();
@@ -37,8 +39,8 @@ const JobForm = () => {
 
   const AvatarMap = Array.from({ length: 11 }, (_, index) => index);
   return (
-    <div className="w-full bg-white p-4">
-      <div className=" flex flex-1 items-center justify-center gap-10">
+    <div className="w-full bg-white p-4 rounded-3xl">
+      <div className="flex flex-auto items-center justify-center gap-10">
         <div className="w-2/5">
         <p className="font-bold text-3xl py-1">Add Project / Job</p>
           <form className="w-full">
