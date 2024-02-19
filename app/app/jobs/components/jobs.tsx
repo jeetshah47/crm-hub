@@ -17,7 +17,7 @@ const Jobs = () => {
   }
 
   return (
-    <div className="">
+    <div className="h-full border border-red-300">
       <SectionHead title="Jobs" buttonText="Add Jobs" buttonPress={handleShowAddModal} />
       <TodoList />
       {/* <Modal

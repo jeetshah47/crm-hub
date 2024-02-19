@@ -106,7 +106,7 @@ const TodoContainer = () => {
           key={title.type}
           onDragOver={handleAllowDrop}
           onDrop={handleOnDrop}
-          className="h-full space-y-4 scroll-shrink border border-red-200"
+          className="h-full space-y-4 scroll-shrink"
           id={title.type}
         >
           <div className="">

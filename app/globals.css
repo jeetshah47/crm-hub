@@ -8,9 +8,16 @@
   --background-end-rgb: 255, 255, 255;
 }
 
+html, body {
+  height: 100%;
+}
+
+
 body {
   background-color: #f4f9fd;
+  /* border: 1px solid blue; */
 }
+
 
 ::-webkit-scrollbar {
   width: 1px;
