@@ -36,6 +36,13 @@ model User {
   Jobs       Jobs[]
 }
 
+model Contact {
+  id    String @id @default(uuid())
+  name  String
+  phone String @unique
+  job   Jobs[]
+}
+
 model Jobs {
   id          String     @id @default(uuid())
   name        String
@@ -43,6 +50,8 @@ model Jobs {
   priority    Priority   @default(low)
   description String
   userId      String
+  contact     Contact    @relation(fields: [contactId], references: [id])
+  contactId   String 
   createdAt   DateTime   @default(now())
   updatedAt   DateTime   @updatedAt
   user        User       @relation(fields: [userId], references: [id])

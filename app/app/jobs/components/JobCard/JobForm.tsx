@@ -9,6 +9,8 @@ import { useState } from "react";
 const JobForm = () => {
   const [job, setJob] = useState({
     name: "",
+    contact_name: "",
+    contact_number: "",
     priority: "",
     description: "",
   });
@@ -28,9 +30,7 @@ const JobForm = () => {
     },
   ];
 
-  const handleOnChange = () => {
-    
-  };
+  const handleOnChange = () => {};
 
   const dateFormat = () => {
     const localDate = new Date();
@@ -39,10 +39,10 @@ const JobForm = () => {
 
   const AvatarMap = Array.from({ length: 11 }, (_, index) => index);
   return (
-    <div className="w-full bg-white p-4 rounded-3xl">
-      <div className="flex flex-auto items-center justify-center gap-10">
+    <div className="w-full bg-white p-4 rounded-3xl border border-red-300 h-full flex flex-col">
+      <div className="flex flex-auto items-center justify-center gap-10 border border-blue-300">
         <div className="w-2/5">
-        <p className="font-bold text-3xl py-1">Add Project / Job</p>
+          <p className="font-bold text-3xl py-1">Add Project / Job</p>
           <form className="w-full">
             <InputBox
               value={job.name}
@@ -50,6 +50,21 @@ const JobForm = () => {
               type="text"
               label="Project Name / Organization Name"
             />
+            <div className="flex items-center gap-2">
+              <InputBox
+                value={job.contact_name}
+                onChange={handleOnChange}
+                type="text"
+                label="Contact Person Name "
+              />
+
+              <InputBox
+                value={job.contact_number}
+                onChange={handleOnChange}
+                type="text"
+                label="Contact Number"
+              />
+            </div>
             <div>
               <DatePicker
                 label="Start Date"
@@ -71,7 +86,7 @@ const JobForm = () => {
             </div>
           </form>
         </div>
-        <div className="p-4 rounded-2xl border border-green-200 w-1/3">
+        <div className="p-4 rounded-2xl border border-green-200 h-fit w-1/3">
           <p className="text-lg font-bold ">Select Image</p>
           <div className="text-secondary py-2">
             Select or upload an avatar for the project (available formats: jpg,
@@ -88,7 +103,7 @@ const JobForm = () => {
           </div>
         </div>
       </div>
-      <div className="flex flex-1 justify-end">
+      <div className="flex flex-initial justify-end">
         <Button onClick={() => {}} text="Save Project" />
       </div>
     </div>

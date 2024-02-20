@@ -100,39 +100,43 @@ const TodoContainer = () => {
   };
 
   return (
-    <div className="grid grid-cols-4 gap-6 min-h-96">
+    <div className="grid grid-cols-4 gap-6 flex-auto ">
       {Progress.map((title) => (
         <div
           key={title.type}
           onDragOver={handleAllowDrop}
           onDrop={handleOnDrop}
-          className="h-full space-y-4 scroll-shrink"
+          className=""
           id={title.type}
         >
-          <div className="">
-            <div
-              className={`rounded-3xl py-2 px-2 w-48 text-center bg-opacity-15 ${title.style}`}
-            >
-              <p className={`font-bold`}>{title.label}</p>
+          <div className="flex flex-col h-full ">
+            <div className="flex-initial pb-2 sticky">
+              <div
+                className={`rounded-2xl py-3 px-2 w-48 text-center bg-opacity-15 ${title.style}`}
+              >
+                <p className={`font-bold`}>{title.label}</p>
+              </div>
+            </div>
+            <div className="space-y-2">
+              {itemList
+                .filter((items) => items.type === title.type)
+                .map((value) => (
+                  <div
+                    key={value.id}
+                    id={value.id.toString()}
+                    draggable={true}
+                    onDragStart={handleDrag}
+                    onDrag={handleOnDrag}
+                    onDragEnd={handleEndDrag}
+                    className="bg-white rounded-3xl w-48 p-5 drop-shadow-md"
+                  >
+                    <p className="text-secondary">TS000015</p>
+                    <p>{value.data}</p>
+                    <p>{value.type}</p>
+                  </div>
+                ))}
             </div>
           </div>
-          {itemList
-            .filter((items) => items.type === title.type)
-            .map((value) => (
-              <div
-                key={value.id}
-                id={value.id.toString()}
-                draggable={true}
-                onDragStart={handleDrag}
-                onDrag={handleOnDrag}
-                onDragEnd={handleEndDrag}
-                className="bg-white rounded-3xl w-48 p-5 drop-shadow-md"
-              >
-                <p className="text-secondary">TS000015</p>
-                <p>{value.data}</p>
-                <p>{value.type}</p>
-              </div>
-            ))}
         </div>
       ))}
     </div>

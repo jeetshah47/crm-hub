@@ -8,18 +8,18 @@ const Sidebar = () => {
   const pathname = usePathname();
 
   return (
-    <div className="h-full fixed grid grid-cols-1 justify-items-center py-4 px-4 text-secondary bg-white drop-shadow-sm">
+    <div className="h-full py-4 px-4 text-secondary bg-white drop-shadow-sm ">
       <ul className="w-full">
         {SidebarItems.map((item) => (
           <Link
             href={"/app" + item.path}
             key={item.id}
-            className={`flex items-center rounded-md px-8 gap-4 font-semibold text-lg py-3 hover:bg-primary-blue hover:bg-opacity-10 hover:text-primary-blue ${
+            className={`flex items-center rounded-md px-2 gap-4 text-lg font-semibold  py-3 hover:bg-primary-blue hover:bg-opacity-10 hover:text-primary-blue ${
               pathname.includes(item.path) &&
               " bg-primary-blue text-primary-blue"
-            } ${pathname.includes(item.path) && " bg-opacity-10"}`}
+            } ${pathname.includes(item.path) && "bg-opacity-10"}`}
           >
-            <Icon icon={item.icon} />
+            <Icon icon={item.icon}  />
             <p>{item.title}</p>
           </Link>
         ))}

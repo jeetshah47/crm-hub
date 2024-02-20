@@ -1,17 +1,19 @@
-import FilterGroup from "./FilterGroup";
+import FilterGroup from "./Filter/FilterGroup";
 import TodoContainer from "./TodoContainer";
 import TodoHead from "./todo-head";
 
 const TodoList = () => {
   return (
-    <div className="py-6 flex h-full flex-col border">
-      <TodoHead />
-      <div className="grid grid-cols-6 gap-2">
-        <div className="col-span-1">
-          <FilterGroup />
-        </div>
-        <div className="col-span-5">
-          <TodoContainer />
+    <div className="py-2 flex-auto">
+      <div className="flex flex-col h-full">
+        <div className="grid grid-cols-5 gap-6 flex-auto">
+          <div className="col-span-1">
+            <FilterGroup />
+          </div>
+          <div className="col-span-4 flex flex-col">
+            <TodoHead />
+            <TodoContainer />
+          </div>
         </div>
       </div>
     </div>

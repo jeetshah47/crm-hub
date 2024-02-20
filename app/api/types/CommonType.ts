@@ -11,7 +11,13 @@ interface UserType {
   last_name: string;
   createdAt?: string;
   updatedAt?: string;
-  jobs?: JobType[];
+  Jobs?: JobType[];
+}
+
+interface ContactType {
+  id: string;
+  name: string;
+  job: JobType[];
 }
 
 interface JobType {
@@ -21,6 +27,7 @@ interface JobType {
   description: Priority;
   status: string;
   userId: string;
+  contact: ContactType;
   createdAt?: Date;
   updatedAt?: Date;
   user?: UserType;

@@ -13,12 +13,18 @@ const Jobs = () => {
   const [showModal, setShowModal] = useState(false);
   const router = useRouter();
   const handleShowAddModal = () => {
-    router.push(`/app/jobs/add-job`)
-  }
+    router.push(`/app/jobs/add-job`);
+  };
 
   return (
-    <div className="h-full border border-red-300">
-      <SectionHead title="Jobs" buttonText="Add Jobs" buttonPress={handleShowAddModal} />
+    <div className="h-full flex flex-col">
+      <div className="flex-initial">
+        <SectionHead
+          title="Jobs"
+          buttonText="Add Jobs"
+          buttonPress={handleShowAddModal}
+        />
+      </div>
       <TodoList />
       {/* <Modal
         display={showModal}

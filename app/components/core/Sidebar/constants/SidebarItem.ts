@@ -1,7 +1,7 @@
 export const SidebarItems = [
     {
         icon: "streamline:dashboard-circle-solid",
-        title: "Dashboard",
+        title: "dashboard",
         id: 1,
         path: "/dashboard"
     },
