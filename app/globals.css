@@ -31,8 +31,10 @@ body {
   }
 }
 
-@media (min-width: 1580px) {
+@media ( max-width: 1920px) {
   body {
-    /* font-size: 85% !important; */
+    
+    font-size: 85% !important;
+    /* background-color:  blue; */
   }
 }
