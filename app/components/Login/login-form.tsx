@@ -1,5 +1,4 @@
 "use client";
-import { signIn } from "next-auth/react";
 import React, { HTMLAttributes, useState } from "react";
 
 const LoginForm = () => {
@@ -18,17 +17,7 @@ const LoginForm = () => {
 
   const handleLoginApi = async () => {
     try {
-      const signinResult = await  signIn("credentials", {
-        email: user.email,
-        password: user.password,
-        redirect: false,
-      });
-      if(signinResult?.ok) {
-        console.log("Success",signinResult); 
-      }
-      if(signinResult?.error) {
-        console.log("Error",signinResult);
-      }
+      
     } catch (error) {
       console.log("error");
     }

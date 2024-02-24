@@ -39,8 +39,8 @@ const JobForm = () => {
 
   const AvatarMap = Array.from({ length: 11 }, (_, index) => index);
   return (
-    <div className="w-full bg-white p-4 rounded-3xl border border-red-300 h-full flex flex-col">
-      <div className="flex flex-auto items-center justify-center gap-10 border border-blue-300">
+    <div className="w-full bg-white p-4 rounded-3xl  h-full flex flex-col">
+      <div className="flex flex-auto items-center justify-center gap-10  ">
         <div className="w-2/5">
           <p className="font-bold text-3xl py-1">Add Project / Job</p>
           <form className="w-full">
@@ -55,7 +55,7 @@ const JobForm = () => {
                 value={job.contact_name}
                 onChange={handleOnChange}
                 type="text"
-                label="Contact Person Name "
+                label="Contact Person Name"
               />
 
               <InputBox
