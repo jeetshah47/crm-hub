@@ -23,7 +23,7 @@ export async function POST(req: NextRequest, res: NextApiResponse) {
     return NextResponse.json({ error: "Invalid" }, { status: 400 });
   }
 
-  const { name, priority, description } = body;
+  const { name, priority, description, contactNumber, contactName } = body;
 
   if (!name || !priority || !description) {
     return NextResponse.json({
@@ -31,15 +31,28 @@ export async function POST(req: NextRequest, res: NextApiResponse) {
       message: "Missing Required Parameters",
     });
   }
-  try {
-    const res = await prisma.jobs.create({
-      data: { name, priority, description, userId },
-    });
 
-    return NextResponse.json({ message: "Job Created", data: res }, {status: 201});
-  } catch (error) {
-    return NextResponse.json({ message: "Job Failed", error: error }, {status: 500 });
+  try {
+    const contactRes = await prisma.contact.create({
+      data: {name: contactName, phone: contactNumber}
+    })
+    contactRes
+
+    try {
+      const res = await prisma.jobs.create({
+        data: { name, priority, description, userId, contactId: contactRes.id },
+      });
+  
+      return NextResponse.json({ message: "Job Created", data: res }, {status: 201});
+    } catch (error) {
+      return NextResponse.json({ message: "Job Failed", error: error }, {status: 500 });
+    }
   }
+
+  catch (error) {
+    return NextResponse.json({message: "Job Contact Failed", error: error}, {status: 301})
+  }
+  
 }
 
 export async function PATCH(req: NextRequest, { params }: JobRequestParams) {
