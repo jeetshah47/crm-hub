@@ -100,7 +100,7 @@ const TodoContainer = () => {
   };
 
   return (
-    <div className="grid grid-cols-4 gap-6 flex-auto ">
+    <div className="grid grid-cols-4 gap-6 flex-auto">
       {Progress.map((title) => (
         <div
           key={title.type}
@@ -109,7 +109,7 @@ const TodoContainer = () => {
           className=""
           id={title.type}
         >
-          <div className="flex flex-col h-full ">
+          <div className="flex flex-col h-full">
             <div className="flex-initial pb-2 sticky">
               <div
                 className={`rounded-2xl py-3 px-2 w-48 text-center bg-opacity-15 ${title.style}`}
@@ -128,7 +128,7 @@ const TodoContainer = () => {
                     onDragStart={handleDrag}
                     onDrag={handleOnDrag}
                     onDragEnd={handleEndDrag}
-                    className="bg-white rounded-3xl w-48 p-5 drop-shadow-md"
+                    className="bg-white rounded-xl w-48 p-5 drop-shadow-md"
                   >
                     <p className="text-secondary">TS000015</p>
                     <p>{value.data}</p>
