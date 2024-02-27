@@ -17,24 +17,16 @@ const Jobs = () => {
   };
 
   return (
-    <div className="h-full flex flex-col">
+    <div className="h-full flex flex-col text-primary-content">
       <div className="flex-initial">
         <SectionHead
           title="Jobs"
-          buttonText="Add Jobs"
+          buttonText="Add Job"
           buttonPress={handleShowAddModal}
         />
       </div>
       <TodoList />
-      {/* <Modal
-        display={showModal}
-        title="Add Job"
-        buttonText="Save Job"
-        buttonAction={setShowModal}
-      >
-        <TaskForm />
-        <JobForm />
-      </Modal> */}
+      
     </div>
   );
 };

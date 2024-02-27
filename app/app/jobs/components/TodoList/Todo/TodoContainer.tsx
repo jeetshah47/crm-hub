@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Progress } from "./progress";
-import Card from "@/app/components/common/Container/Cards/Card";
+
 const TodoContainer = () => {
   const [itemList, setItemList] = useState([
     {
@@ -62,7 +62,7 @@ const TodoContainer = () => {
 
   const handleAllowDrop = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
-    console.log("drag eixt");
+    console.log("drag exit");
   };
 
   const handleOnDrop = (e: React.DragEvent<HTMLDivElement>) => {

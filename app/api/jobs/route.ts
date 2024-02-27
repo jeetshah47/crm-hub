@@ -34,25 +34,31 @@ export async function POST(req: NextRequest, res: NextApiResponse) {
 
   try {
     const contactRes = await prisma.contact.create({
-      data: {name: contactName, phone: contactNumber}
-    })
-    contactRes
+      data: { name: contactName, phone: contactNumber },
+    });
+    contactRes;
 
     try {
       const res = await prisma.jobs.create({
         data: { name, priority, description, userId, contactId: contactRes.id },
       });
-  
-      return NextResponse.json({ message: "Job Created", data: res }, {status: 201});
-    } catch (error) {
-      return NextResponse.json({ message: "Job Failed", error: error }, {status: 500 });
-    }
-  }
 
-  catch (error) {
-    return NextResponse.json({message: "Job Contact Failed", error: error}, {status: 301})
+      return NextResponse.json(
+        { message: "Job Created", data: res },
+        { status: 201 }
+      );
+    } catch (error) {
+      return NextResponse.json(
+        { message: "Job Failed", error: error },
+        { status: 500 }
+      );
+    }
+  } catch (error) {
+    return NextResponse.json(
+      { message: "Job Contact Failed", error: error },
+      { status: 301 }
+    );
   }
-  
 }
 
 export async function PATCH(req: NextRequest, { params }: JobRequestParams) {
@@ -67,9 +73,15 @@ export async function PATCH(req: NextRequest, { params }: JobRequestParams) {
       data: { name, priority, description },
     });
 
-    return NextResponse.json({ message: "Job Updated", data: res }, {status: 200});
+    return NextResponse.json(
+      { message: "Job Updated", data: res },
+      { status: 200 }
+    );
   } catch (error) {
-    return NextResponse.json({ message: "Job Failed", error: error }, {status: 500});
+    return NextResponse.json(
+      { message: "Job Failed", error: error },
+      { status: 500 }
+    );
   }
 }
 

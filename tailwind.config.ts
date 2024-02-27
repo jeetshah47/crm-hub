@@ -28,8 +28,9 @@ const config: Config = {
         modal: "#2155A3",
         "white-ice": "#E0F9F2",
       },
+      
     },
   },
-  plugins: [],
+  plugins: [require("daisyui")],
 };
 export default config;

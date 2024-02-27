@@ -9,6 +9,7 @@ export default function AppLayout({ children }: AppLayoutProps) {
   return (
     <div className="h-full">
       <div className="px-8 flex flex-col h-full">
+        <Sidebar />
         <Header />
         <div className="py-2 flex-auto">{children}</div>
       </div>

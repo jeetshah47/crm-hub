@@ -6,6 +6,9 @@ const FilterGroup = () => {
   return (
     <div className="bg-white h-full rounded-3xl">
       <div>
+        <div>
+        clarity:add-line
+        </div>
         <p className="px-6 py-4 font-bold">Current Projects</p>
         <div className="h-px bg-blue-chalk" />
       </div>
