@@ -64,7 +64,7 @@ const Jobs = () => {
   }
 
   return (
-    <div className="h-full flex flex-col text-primary-content">
+    <div className="h-full flex flex-col text-black">
       <div className="flex-initial">
         <SectionHead
           title="Jobs"

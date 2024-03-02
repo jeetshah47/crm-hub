@@ -4,7 +4,7 @@ import Box from "@/app/components/common/Container/Box/Box";
 import SectionHead from "@/app/components/common/SectionHead/SectionHead";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import React from "react";
+import React, { useEffect } from "react";
 import Employees from "./employees";
 import JobSummary from "./job-summary";
 import PaymentRemainder from "./payment-remainder";
@@ -12,6 +12,11 @@ import PaymentRemainder from "./payment-remainder";
 const Dashboard = () => {
   const router = useRouter();
   const handleViewEvents = () => {};
+  useEffect(() => {
+    localStorage.setItem("userId", "8ba6cb9c-2a7d-42d6-8868-50d77abf8af6")
+    localStorage.setItem("name", "Jeet Shah")
+    
+  }, [])
   return (
     <div className="space-y-4">
       <SectionHead
