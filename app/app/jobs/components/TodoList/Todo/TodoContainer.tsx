@@ -132,7 +132,10 @@ const TodoContainer = () => {
                   >
                     <p className="text-secondary">TS000015</p>
                     <p>{value.data}</p>
-                    <p>{value.type}</p>
+                    <div className="flex  justify-between">
+                    <div className="py-1.5 px-2 rounded-xl  bg-low-blue">W 28</div>
+                    <div className="py-1.5 px-2 rounded-xl  bg-low-blue">H 28</div>
+                    </div>
                   </div>
                 ))}
             </div>

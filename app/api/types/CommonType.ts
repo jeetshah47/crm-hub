@@ -25,7 +25,6 @@ interface JobType {
   name: string;
   priority: string;
   description: Priority;
-  status: string;
   userId: string;
   contact: ContactType;
   createdAt?: Date;
@@ -51,6 +50,7 @@ interface TaskType {
   id: string;
   jobId: string;
   job?: JobType[];
+  status: string;
   detail: string;
   width: number;
   height: number;

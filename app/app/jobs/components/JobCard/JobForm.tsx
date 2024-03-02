@@ -4,7 +4,9 @@ import DatePicker from "@/app/components/common/Input/DatePicker";
 import InputBox from "@/app/components/common/Input/InputBox";
 import SelectBox from "@/app/components/common/Input/SelectBox";
 import TextBox from "@/app/components/common/Input/TextBox";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
+import {Icon} from "@iconify/react"
 
 const JobForm = () => {
   const [job, setJob] = useState({
@@ -30,19 +32,30 @@ const JobForm = () => {
     },
   ];
 
-  const handleOnChange = () => {};
+  const handleOnChange = () => { };
 
   const dateFormat = () => {
     const localDate = new Date();
     return `${localDate.getFullYear()}-${localDate.getMonth() + 1}-${localDate.getDate()}`;
   };
 
+  const router = useRouter()
+
+  const handleBack = () => {
+    router.back()
+
+  }
+
   const AvatarMap = Array.from({ length: 11 }, (_, index) => index);
   return (
     <div className="w-full bg-white p-4 rounded-3xl  h-full flex flex-col">
-      <div className="flex flex-auto items-center justify-center gap-10  ">
+      <div className="flex flex-auto items-center justify-center gap-10">
         <div className="w-2/5">
-          <p className="font-bold text-3xl py-1">Add Project / Job</p>
+          <div className="flex text-primary-blue font-bold items-center gap-2 hover:underline ">
+          <Icon icon={"lets-icons:back"} />
+          <button onClick={handleBack}>Back to Jobs</button>
+          </div>
+          <p className="font-bold text-3xl py-1 text-black">Add Project / Job</p>
           <form className="w-full">
             <InputBox
               value={job.name}
@@ -104,7 +117,7 @@ const JobForm = () => {
         </div>
       </div>
       <div className="flex flex-initial justify-end">
-        <Button onClick={() => {}} text="Save Project" />
+        <Button onClick={() => { }} text="Save Project" />
       </div>
     </div>
   );

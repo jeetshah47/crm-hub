@@ -18,7 +18,7 @@ const TextBox = ({
       <p className="text-sm">{label}</p>
       <textarea
         placeholder={placeholder ? placeholder : label}
-        className="outline-none shadow-sm  h-24 px-4 py-2 rounded-lg w-full border-2 placeholder:font-normal text-black focus:border-primary-blue"
+        className="outline-none shadow-sm bg-white  h-24 px-4 py-2 rounded-lg w-full border-2 placeholder:font-normal text-black focus:border-primary-blue"
         value={value}
         onChange={onChange}
       />

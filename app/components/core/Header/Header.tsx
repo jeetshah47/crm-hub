@@ -11,7 +11,7 @@ const Header = () => {
       {/* <SearchBar /> */}
       <div className="drawer-content">
         {/* Page content here */}
-        <label htmlFor="my-drawer" className="btn btn-primary drawer-button">
+        <label htmlFor="my-drawer" className="btn bg-primary-blue border-none hover:bg-primary-blue text-white drawer-button">
           <Icon icon="eva:menu-fill" />
         </label>
 

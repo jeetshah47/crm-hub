@@ -12,20 +12,67 @@ import { useRouter } from "next/navigation";
 const Jobs = () => {
   const [showModal, setShowModal] = useState(false);
   const router = useRouter();
+  const [itemList, setItemList] = useState([
+    {
+      data: "Task 1ud",
+      id: 1,
+      type: "to-do",
+    },
+    {
+      data: "Task 2ud",
+      id: 2,
+      type: "to-do",
+    },
+    {
+      data: "Task 3ud",
+      id: 3,
+      type: "done",
+    },
+    {
+      data: "Task 4ud",
+      id: 4,
+      type: "done",
+    },
+    {
+      data: "Task 5ud",
+      id: 5,
+      type: "in-review",
+    },
+    {
+      data: "Task 6ud",
+      id: 6,
+      type: "to-do",
+    },
+    {
+      data: "Task 7ud",
+      id: 7,
+      type: "done",
+    },
+    {
+      data: "Task 8ud",
+      id: 8,
+      type: "done",
+    },
+  ]);
+
   const handleShowAddModal = () => {
     router.push(`/app/jobs/add-job`);
   };
+
+  const handleShowAddTaskModal = () => {
+    setShowModal(!showModal); 
+  }
 
   return (
     <div className="h-full flex flex-col text-primary-content">
       <div className="flex-initial">
         <SectionHead
           title="Jobs"
-          buttonText="Add Job"
+          buttonText="Add Task"
           buttonPress={handleShowAddModal}
         />
       </div>
-      <TodoList />
+      <TodoList showModal={showModal} data={[{}]} setShowModal={handleShowAddTaskModal}  />
       
     </div>
   );

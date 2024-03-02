@@ -1,17 +1,18 @@
 "use client";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { SidebarItems } from "./constants/SidebarItem";
 import { Icon } from "@iconify/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 const Sidebar = () => {
   const pathname = usePathname();
+  const drawerRef = useRef<HTMLInputElement>(null);
 
   return (
 
     <div className="drawer">
-      <input id="my-drawer" type="checkbox" className="drawer-toggle" />
-      
+      <input ref={drawerRef} id="my-drawer" type="checkbox" className="drawer-toggle" />
+
       <div className="drawer-side">
         <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
         <ul className="menu p-4 w-80 min-h-full bg-white text-base-content">

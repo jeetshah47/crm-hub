@@ -3,8 +3,18 @@ import FilterGroup from "./Filter/FilterGroup";
 import TodoContainer from "./TodoContainer";
 import TodoHead from "./todo-head";
 import TaskBoard from "./TaskDetails/task-board";
+import Modal from "@/app/components/common/Modal/Modal";
+import { TaskType } from "@/app/api/types/CommonType";
 
-const TodoList = () => {
+type TaskData = Partial<TaskType>
+
+type TodoListProps = {
+  showModal: boolean;
+  setShowModal: () => void;
+  data: TaskData[];
+}
+
+const TodoList = ({}:TodoListProps) => {
   const params = useSearchParams();
   console.log("q", params.get("view"));
 
@@ -25,6 +35,11 @@ const TodoList = () => {
               <TodoContainer />
             </div>
           )}
+          <Modal title="s" buttonAction={() => { }} buttonText="" display={false}>
+            <div>
+
+            </div>
+          </Modal>
         </div>
       </div>
     </div>
