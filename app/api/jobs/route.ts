@@ -14,7 +14,7 @@ export async function GET(req: NextRequest) {
 }
 
 export async function POST(req: NextRequest, res: NextApiResponse) {
-  let userId = "a49e4fa9-d7a6-44c2-810b-3ed68c95b546";
+  let userId = "8ba6cb9c-2a7d-42d6-8868-50d77abf8af6";
   let body: any;
   try {
     body = await req.json();
@@ -36,7 +36,6 @@ export async function POST(req: NextRequest, res: NextApiResponse) {
     const contactRes = await prisma.contact.create({
       data: { name: contactName, phone: contactNumber },
     });
-    contactRes;
 
     try {
       const res = await prisma.jobs.create({

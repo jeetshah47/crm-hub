@@ -10,32 +10,23 @@ const Sidebar = () => {
 
   return (
 
-    <div className="drawer">
-      <input ref={drawerRef} id="my-drawer" type="checkbox" className="drawer-toggle" />
-
-      <div className="drawer-side">
-        <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
-        <ul className="menu p-4 w-80 min-h-full bg-white text-base-content">
-          {SidebarItems.map((item) => (
-            <li key={item.id}>
-              <Link
-                href={"/app" + item.path}
-                key={item.id}
-                className={`flex items-center rounded-md px-2 gap-4 text-lg font-semibold  py-3 hover:bg-primary-blue hover:bg-opacity-10 hover:text-primary-blue ${pathname.includes(item.path) &&
-                  " bg-primary-blue text-primary-blue"
-                  } ${pathname.includes(item.path) && "bg-opacity-10"}`}
-              >
-                <Icon icon={item.icon} />
-                <p>{item.title}</p>
-              </Link>
-            </li>
-          ))}
-          {/* Sidebar content here */}
-
-
-        </ul>
-      </div>
-    </div>
+    <div className="h-full py-4 px-4 text-secondary bg-white drop-shadow-sm">
+    <ul className="w-full">
+      {SidebarItems.map((item) => (
+        <Link
+          href={"/app" + item.path}
+          key={item.id}
+          className={`flex items-center rounded-md px-8 gap-4 font-semibold text-lg py-3 hover:bg-primary-blue hover:bg-opacity-10 hover:text-primary-blue ${
+            pathname.includes(item.path) &&
+            " bg-primary-blue text-primary-blue"
+          } ${pathname.includes(item.path) && " bg-opacity-10"}`}
+        >
+          <Icon icon={item.icon} />
+          <p>{item.title}</p>
+        </Link>
+      ))}
+    </ul>
+  </div>
 
 
   );

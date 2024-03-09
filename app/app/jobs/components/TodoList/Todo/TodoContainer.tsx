@@ -100,7 +100,7 @@ const TodoContainer = () => {
   };
 
   return (
-    <div className="grid grid-cols-4 gap-6 flex-auto">
+    <div className="grid grid-cols-4 gap-6   flex-auto overflow-auto">
       {Progress.map((title) => (
         <div
           key={title.type}
@@ -109,7 +109,7 @@ const TodoContainer = () => {
           className=""
           id={title.type}
         >
-          <div className="flex flex-col h-full">
+          <div className="flex flex-col h-full ">
             <div className="flex-initial pb-2 sticky">
               <div
                 className={`rounded-2xl py-3 px-2 w-48 text-center bg-opacity-15 ${title.style}`}

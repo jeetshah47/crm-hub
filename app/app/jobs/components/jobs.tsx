@@ -60,11 +60,11 @@ const Jobs = () => {
   };
 
   const handleShowAddTaskModal = () => {
-    setShowModal(!showModal); 
+    setShowModal(!showModal);
   }
 
   return (
-    <div className="h-full flex flex-col text-black">
+    <div className="flex flex-col flex-auto text-black">
       <div className="flex-initial">
         <SectionHead
           title="Jobs"
@@ -72,8 +72,7 @@ const Jobs = () => {
           buttonPress={handleShowAddModal}
         />
       </div>
-      <TodoList showModal={showModal} data={[{}]} setShowModal={handleShowAddTaskModal}  />
-      
+      <TodoList showModal={showModal} data={[{}]} setShowModal={handleShowAddTaskModal} />
     </div>
   );
 };

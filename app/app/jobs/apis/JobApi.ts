@@ -1,7 +1,9 @@
 import { JobRequest } from "@/app/api/jobs/types/JobRequest";
+import { JobType } from "@/app/api/types/CommonType";
 import axios from "axios";
 
-const host = process.env.NEXTAUTH_API_URL;
+const host = process.env.NEXT_PUBLIC_BACKEND_API_URL;
+console.log(host);
 
 export const createJob = async (data: JobRequest) => {
   const res = await axios.post(`${host}/jobs`, {
@@ -11,7 +13,7 @@ export const createJob = async (data: JobRequest) => {
 };
 
 export const getJobs = async () => {
-  const res = await axios.get(`${host}/jobs`);
+  const res = await axios.get<JobType[]>(`${host}/jobs`);
   return res.data;
 }
 

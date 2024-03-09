@@ -7,15 +7,8 @@ import Navbar from "../navbar/Navbar";
 import {Icon} from "@iconify/react"
 const Header = () => {
   return (
-    <div className="flex flex-initial items-center  py-2 justify-between  w-full">
+    <div className="flex flex-initial items-center  py-2 justify-end  w-full">
       {/* <SearchBar /> */}
-      <div className="drawer-content">
-        {/* Page content here */}
-        <label htmlFor="my-drawer" className="btn bg-primary-blue border-none hover:bg-primary-blue text-white drawer-button">
-          <Icon icon="eva:menu-fill" />
-        </label>
-
-      </div>
       <Profile />
     </div>
   );
