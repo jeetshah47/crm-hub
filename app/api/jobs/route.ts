@@ -7,7 +7,7 @@ export async function GET(req: NextRequest) {
   try {
     const jobs = await prisma.jobs.findMany({});
     if (!jobs?.length) return NextResponse.json({ message: "No Jobs Found" });
-    return NextResponse.json(jobs);
+    return NextResponse.json(jobs.reverse());
   } catch (error) {
     return NextResponse.json({ message: "error-job-code" }, { status: 404 });
   }

@@ -17,7 +17,6 @@ const InputBox = ({
   placeholder,
   name
 }: InputProps) => {
-  console.log("name", value);
   
   return (
     <div className="font-semibold space-y-3 py-4 w-full">

@@ -9,6 +9,8 @@ import { useState } from "react";
 import {Icon} from "@iconify/react"
 import { createJob } from "../../apis/JobApi";
 import { JobRequest } from "@/app/api/jobs/types/JobRequest";
+import { ScaleLoader } from "react-spinners";
+import Loader from "@/app/components/common/Loader/Loader";
 
 const JobForm = () => {
   const [job, setJob] = useState<JobRequest>({
@@ -18,6 +20,8 @@ const JobForm = () => {
     priority: "low",
     description: "",
   });
+
+  const [loading, setLoading] = useState(false);
 
   const priorityOptions = [
     {
@@ -35,7 +39,6 @@ const JobForm = () => {
   ];
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => { 
-    console.log(e.target.value, e.currentTarget.name);
     
     setJob({...job, [e.target.name] : e.target.value})
   };
@@ -44,8 +47,8 @@ const JobForm = () => {
 
   }
 
-  const handleOnChangeTextBox = () => {
-
+  const handleOnChangeTextBox = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+      setJob({...job, description: e.currentTarget.value})
   }
 
   const dateFormat = () => {
@@ -57,11 +60,22 @@ const JobForm = () => {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setLoading(true);
     try {
       const saveJob = await createJob({...job})
+      console.log(saveJob);
+      if(saveJob?.status === 404) {
+        alert("Job Failed saved in database")
+        setLoading(false)
+      }
+      else {
+        setLoading(false)
+        router.push('/app/jobs')
+      }
     }
     catch(err) {
       console.log(err);
+      setLoading(false)
     }
   }
 
@@ -95,25 +109,11 @@ const JobForm = () => {
                 name="contactNumber"
               />
             </div>
+            
             <div>
-              <DatePicker
-                label="Start Date"
-                value={dateFormat()}
-                onChange={handleOnChange}
-                placeholder="Start Date"
-              />
+              <TextBox label="Description" value={job.description} onChange={handleOnChangeTextBox} />
             </div>
-            <div>
-              <SelectBox
-                label="Priority"
-                onChange={handleOnChangeOption}
-                value={job.priority}
-                options={priorityOptions}
-              />
-            </div>
-            <div>
-              <TextBox label="Description" onChange={handleOnChangeTextBox} />
-            </div>
+            {loading && <Loader />}
             <Button text="Add Job" onClick={() => {}}   />
           </form>
         </div>
