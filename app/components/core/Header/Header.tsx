@@ -7,7 +7,7 @@ import Navbar from "../navbar/Navbar";
 import {Icon} from "@iconify/react"
 const Header = () => {
   return (
-    <div className="flex flex-initial items-center  py-2 justify-end  w-full">
+    <div className="flex flex-initial items-center  py-2 justify-end relative w-full">
       {/* <SearchBar /> */}
       <Profile />
     </div>

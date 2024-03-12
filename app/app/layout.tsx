@@ -10,11 +10,11 @@ export default function AppLayout({ children }: AppLayoutProps) {
     <>
       <div className="md:h-full max-sm:hidden">
         <div className="flex flex-row h-full">
-          <div className="flex-initial">
+          <div className="flex-initial border border-red-200  h-full relative">
             <Sidebar />
           </div>
-          <div className="py-2 flex-auto px-6 ">
-            <div className="flex flex-col h-full border">
+          <div className="py-2 flex-auto px-6">
+            <div className="flex flex-col h-full">
               <Header />
               {children}
             </div>

@@ -10,7 +10,7 @@ const Sidebar = () => {
 
   return (
 
-    <div className="h-full py-4 px-4 text-secondary bg-white drop-shadow-sm">
+    <div className="h-full py-4 px-4 text-secondary bg-white border border-blue-500 drop-shadow-sm">
     <ul className="w-full">
       {SidebarItems.map((item) => (
         <Link

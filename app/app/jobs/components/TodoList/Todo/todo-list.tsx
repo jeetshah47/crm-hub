@@ -33,7 +33,7 @@ const TodoList = ({ }: TodoListProps) => {
             <div className="col-span-5 relative ">
               <div className="h-full relative">
                 <div className="flex flex-col h-full absolute w-full">
-                  <TodoHead />
+                  {/* <TodoHead /> */}
                   <TodoContainer />
                 </div>
               </div>

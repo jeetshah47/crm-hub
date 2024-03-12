@@ -7,13 +7,15 @@ import TextBox from "@/app/components/common/Input/TextBox";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import {Icon} from "@iconify/react"
+import { createJob } from "../../apis/JobApi";
+import { JobRequest } from "@/app/api/jobs/types/JobRequest";
 
 const JobForm = () => {
-  const [job, setJob] = useState({
+  const [job, setJob] = useState<JobRequest>({
     name: "",
-    contact_name: "",
-    contact_number: "",
-    priority: "",
+    contactName: "",
+    contactNumber: "",
+    priority: "low",
     description: "",
   });
 
@@ -32,7 +34,19 @@ const JobForm = () => {
     },
   ];
 
-  const handleOnChange = () => { };
+  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => { 
+    console.log(e.target.value, e.currentTarget.name);
+    
+    setJob({...job, [e.target.name] : e.target.value})
+  };
+
+  const handleOnChangeOption = () => {
+
+  }
+
+  const handleOnChangeTextBox = () => {
+
+  }
 
   const dateFormat = () => {
     const localDate = new Date();
@@ -41,41 +55,44 @@ const JobForm = () => {
 
   const router = useRouter()
 
-  const handleBack = () => {
-    router.back()
-
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    try {
+      const saveJob = await createJob({...job})
+    }
+    catch(err) {
+      console.log(err);
+    }
   }
 
-  const AvatarMap = Array.from({ length: 11 }, (_, index) => index);
   return (
-    <div className="w-full bg-white p-4 rounded-3xl  h-full flex flex-col">
-      <div className="flex flex-auto items-center justify-center gap-10">
-        <div className="w-2/5">
-          <div className="flex text-primary-blue font-bold items-center gap-2 hover:underline ">
-          <Icon icon={"lets-icons:back"} />
-          <button onClick={handleBack}>Back to Jobs</button>
-          </div>
-          <p className="font-bold text-3xl py-1 text-black">Add Project / Job</p>
-          <form className="w-full">
+    <div className="w-full bg-white p-4 rounded-3xl  h-full flex justify-center relative overflow-auto">
+      <div className="absolute w-2/3">
+        <div className="w-full ">
+          <p className="font-bold text-2xl text-black">Add Project / Job</p>
+          <form onSubmit={handleSubmit} className="w-full">
             <InputBox
               value={job.name}
               onChange={handleOnChange}
               type="text"
               label="Project Name / Organization Name"
+              name="name"
             />
             <div className="flex items-center gap-2">
               <InputBox
-                value={job.contact_name}
+                value={job.contactName}
                 onChange={handleOnChange}
                 type="text"
                 label="Contact Person Name"
+                name="contactName"
               />
 
               <InputBox
-                value={job.contact_number}
+                value={job.contactNumber}
                 onChange={handleOnChange}
                 type="text"
                 label="Contact Number"
+                name="contactNumber"
               />
             </div>
             <div>
@@ -89,37 +106,20 @@ const JobForm = () => {
             <div>
               <SelectBox
                 label="Priority"
-                onChange={handleOnChange}
+                onChange={handleOnChangeOption}
                 value={job.priority}
                 options={priorityOptions}
               />
             </div>
             <div>
-              <TextBox label="Description" onChange={handleOnChange} />
+              <TextBox label="Description" onChange={handleOnChangeTextBox} />
             </div>
+            <Button text="Add Job" onClick={() => {}}   />
           </form>
         </div>
-        <div className="p-4 rounded-2xl border border-green-200 h-fit w-1/3">
-          <p className="text-lg font-bold ">Select Image</p>
-          <div className="text-secondary py-2">
-            Select or upload an avatar for the project (available formats: jpg,
-            png)
-          </div>
-          <div className="flex flex-wrap gap-x-5 gap-y-4 py-1">
-            {/* // eslint-disable-next-line @next/next/no-img-element */}
-            {AvatarMap.map((item) => (
-              <picture key={item}>
-                {" "}
-                <img alt="imaeg" src={`/icons/avatar/Image-${item}.svg`} />
-              </picture>
-            ))}
-          </div>
-        </div>
-      </div>
-      <div className="flex flex-initial justify-end">
-        <Button onClick={() => { }} text="Save Project" />
       </div>
     </div>
+    
   );
 };
 

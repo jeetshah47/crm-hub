@@ -6,6 +6,7 @@ interface InputProps {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   value?: string | number;
   placeholder?: string;
+  name?: string;
 }
 
 const InputBox = ({
@@ -14,7 +15,10 @@ const InputBox = ({
   onChange,
   value,
   placeholder,
+  name
 }: InputProps) => {
+  console.log("name", value);
+  
   return (
     <div className="font-semibold space-y-3 py-4 w-full">
       <p className="text-sm">{label}</p>
@@ -24,6 +28,7 @@ const InputBox = ({
         value={value}
         onChange={onChange}
         type={type}
+        name={name}
       />
     </div>
   );
