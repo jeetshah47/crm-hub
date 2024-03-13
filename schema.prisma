@@ -44,14 +44,13 @@ model Contact {
 }
 
 model Jobs {
-  id          String     @id @default(uuid())
-  name        String
-  status      Status?    @default(pending)
+  id   String @id @default(uuid())
+  name String
   priority    Priority   @default(low)
   description String
   userId      String
   contact     Contact    @relation(fields: [contactId], references: [id])
-  contactId   String 
+  contactId   String
   createdAt   DateTime   @default(now())
   updatedAt   DateTime   @updatedAt
   user        User       @relation(fields: [userId], references: [id])
@@ -69,6 +68,7 @@ model Task {
   rate      Float
   unit      Unit
   createdAt DateTime @default(now())
+  status    Status?  @default(pending)
   updatedAt DateTime @updatedAt
 }
 

@@ -1,49 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Progress } from "./progress";
+import { TaskType } from "@/app/api/types/CommonType";
+import MessageBox from "@/app/components/common/MessageBox/MessageBox";
 
-const TodoContainer = () => {
-  const [itemList, setItemList] = useState([
-    {
-      data: "Task 1ud",
-      id: 1,
-      type: "to-do",
-    },
-    {
-      data: "Task 2ud",
-      id: 2,
-      type: "to-do",
-    },
-    {
-      data: "Task 3ud",
-      id: 3,
-      type: "done",
-    },
-    {
-      data: "Task 4ud",
-      id: 4,
-      type: "done",
-    },
-    {
-      data: "Task 5ud",
-      id: 5,
-      type: "in-review",
-    },
-    {
-      data: "Task 6ud",
-      id: 6,
-      type: "to-do",
-    },
-    {
-      data: "Task 7ud",
-      id: 7,
-      type: "done",
-    },
-    {
-      data: "Task 8ud",
-      id: 8,
-      type: "done",
-    },
-  ]);
+type TaskProps = {
+  taskList: TaskType[];
+  setTaskList: (params: any) => void;
+  onChange: (taskId: string, data: TaskType) => void;
+}
+
+const TodoContainer = ({ taskList, setTaskList, onChange }: TaskProps) => {
+  // const [taskList, setTaskList] = useState<TaskType[]>([]);
 
   const handleDrag = (e: React.DragEvent<HTMLDivElement>) => {
     e.dataTransfer.setData("job", e.currentTarget.id);
@@ -69,11 +36,11 @@ const TodoContainer = () => {
     e.preventDefault();
     let data = e.dataTransfer.getData("job");
     let boxId = e.currentTarget.id;
-    let cloneItemList = [...itemList];
+    let cloneItemList = [...taskList];
     let elementIndex = 0;
     cloneItemList.map((item, index) => {
-      if (item.id === parseInt(data)) {
-        item.type = boxId;
+      if (item.id === (data)) {
+        item.status = boxId;
         elementIndex = index;
       }
     });
@@ -82,26 +49,21 @@ const TodoContainer = () => {
     console.log(cloneItemList.splice(elementIndex, 1));
     cloneItemList.push(cloneElement);
 
-    setItemList(cloneItemList);
+    setTaskList(cloneItemList);
+    onChange(cloneElement.id, cloneElement);
     console.log("current box id", e.currentTarget.id);
 
     console.log(data);
   };
 
-  const handleDragEnter = (e: React.DragEvent<HTMLDivElement>) => {
-    console.log("drag over", e.currentTarget.id);
-    e.currentTarget.classList.add("bg-modal");
-    e.currentTarget.classList.add("bg-opacity-15");
-  };
-  const handleDragExit = (e: React.DragEvent<HTMLDivElement>) => {
-    console.log("drag exit", e.currentTarget.id);
-    e.currentTarget.classList.remove("bg-modal");
-    e.currentTarget.classList.remove("bg-opacity-15");
-  };
+  const cutString = (data: string, size: number) => {
+    return data.length > size ? `${data.substring(0, size)}...` : data;
+  }
 
   return (
     <div className="grid grid-cols-4 gap-6   flex-auto overflow-auto">
-      {Progress.map((title) => (
+      {!taskList?.length && <MessageBox message="No Task Added" />}
+      {taskList?.length > 0 && Progress.map((title) => (
         <div
           key={title.type}
           onDragOver={handleAllowDrop}
@@ -118,8 +80,8 @@ const TodoContainer = () => {
               </div>
             </div>
             <div className="space-y-2">
-              {itemList
-                .filter((items) => items.type === title.type)
+              {taskList
+                .filter((items) => items.status === title.type)
                 .map((value) => (
                   <div
                     key={value.id}
@@ -130,11 +92,11 @@ const TodoContainer = () => {
                     onDragEnd={handleEndDrag}
                     className="bg-white rounded-xl w-48 p-5 drop-shadow-md"
                   >
-                    <p className="text-secondary">TS000015</p>
-                    <p>{value.data}</p>
+                    <p className="text-secondary">{cutString(value.id, 8)}</p>
+                    <p>{cutString(value.detail, 15)}</p>
                     <div className="flex  justify-between">
-                    <div className="py-1.5 px-2 rounded-xl  bg-low-blue">W 28</div>
-                    <div className="py-1.5 px-2 rounded-xl  bg-low-blue">H 28</div>
+                      <div className="py-1.5 px-2 rounded-xl  bg-low-blue">W {value.width}</div>
+                      <div className="py-1.5 px-2 rounded-xl  bg-low-blue">H {value.height}</div>
                     </div>
                   </div>
                 ))}

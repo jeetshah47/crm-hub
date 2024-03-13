@@ -69,7 +69,7 @@ const Jobs = () => {
         <SectionHead
           title="Jobs"
           buttonText="Add Task"
-          buttonPress={handleShowAddModal}
+          buttonPress={handleShowAddTaskModal}
         />
       </div>
       <TodoList showModal={showModal} data={[{}]} setShowModal={handleShowAddTaskModal} />

@@ -3,22 +3,25 @@ import ProjectCard from "./ProjectCard";
 import { Icon } from "@iconify/react";
 import Link from "next/link";
 import { getJobs } from "@/app/app/jobs/apis/JobApi";
+import { useParams, usePathname, useSearchParams, useRouter } from "next/navigation";
 
 type ProjectLocalData = {
   id: string;
   label: string;
-  isActive: boolean;
 }
 
 const ProjectGroup = () => {
   const [showDetails, setShowDetails] = useState(false);
   const [projects, setProjects] = useState<ProjectLocalData[]>([]);
 
+  const params = new URLSearchParams();
+  const router = useRouter()
+  const path = usePathname();
   useEffect(() => {
     const fetchData = async () => {
       try {
         const data = await getJobs();
-        let groupData = data.map(job => ({ id: job.id, label: job.name, isActive: false }))
+        let groupData = data.map(job => ({ id: job.id, label: job.name }))
         setProjects(groupData)
       }
       catch (error) {
@@ -29,8 +32,13 @@ const ProjectGroup = () => {
     fetchData();
   }, [])
 
+  const handleAddParams = (jobId: string) => {
+    params.append("jobId", jobId);
+    router.push(`${path}?${params}`)
+  }
+
   return (
-    <div className="h-full border rounded-3xl flex flex-col w-full absolute">
+    <div className="h-full border rounded-3xl flex flex-col w-full absolute bg-white">
       <div className="flex-initial">
         <div className="px-6 py-4 flex items-center justify-between w-full">
           <p className="font-bold">Current Projects</p>
@@ -49,7 +57,7 @@ const ProjectGroup = () => {
             key={filter.id}
             label={filter.label}
             id={filter.id}
-            isActive={filter.isActive}
+            handleAddParams={handleAddParams}
           />
         ))}
       </div>

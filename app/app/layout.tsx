@@ -10,7 +10,7 @@ export default function AppLayout({ children }: AppLayoutProps) {
     <>
       <div className="md:h-full max-sm:hidden">
         <div className="flex flex-row h-full">
-          <div className="flex-initial border border-red-200  h-full relative">
+          <div className="flex-initial h-full relative">
             <Sidebar />
           </div>
           <div className="py-2 flex-auto px-6">
