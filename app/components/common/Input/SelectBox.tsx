@@ -6,6 +6,7 @@ interface InputProps {
   options: Array<{ label: string; value: string | number }>;
   value?: string | number;
   placeholder?: string;
+  name?: string
 }
 
 const SelectBox = ({
@@ -14,12 +15,14 @@ const SelectBox = ({
   value,
   placeholder,
   options: Options,
+  name
 }: InputProps) => {
   return (
     <div>
       <p className="text-sm py-2">{label}</p>
       <select
         onChange={onChange}
+        name={name}
         className="outline-none shadow-sm bg-white  px-4 py-2 rounded-lg w-full border-2 placeholder:font-normal text-black focus:border-primary-blue"
       >
         {Options?.map((option) => (

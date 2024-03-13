@@ -21,26 +21,32 @@ type TodoListProps = {
 
 const TodoList = ({ showModal, setShowModal }: TodoListProps) => {
   const params = useSearchParams();
-  const jobId = params.get("jobId")
+  const jobId = params.get("jobId");
 
-  const [newTask, setNewTask] = useState<TaskRequest>({} as TaskRequest);
+  const [newTask, setNewTask] = useState<TaskRequest>({
+    detail: "",
+    width: 0,
+    height: 0,
+    jobId: "",
+    quantity: 0,
+    rate: 0,
+    unit: "kg"
+  });
   const [taskList, setTaskList] = useState<TaskType[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
-
 
   const fetchTask = async (jobId: string) => {
     setLoading(true);
     try {
-      const task = await getTask(jobId)
+      const task = await getTask(jobId);
       console.log(task.data);
       setTaskList(task.data);
-      setLoading(false)
-    }
-    catch (err) {
+      setLoading(false);
+    } catch (err) {
       console.log(err);
       setLoading(false);
     }
-  }
+  };
 
   const handleChangeTaskStatus = async (taskId: string, data: TaskType) => {
     setLoading(true);
@@ -48,19 +54,47 @@ const TodoList = ({ showModal, setShowModal }: TodoListProps) => {
       const task = await editTask(taskId, data);
       console.log(task);
       setLoading(false);
-    }
-    catch (err) {
+    } catch (err) {
       console.log(err);
       setLoading(false);
-      if(jobId) {
+      if (jobId) {
         fetchTask(jobId);
       }
     }
-  }
+  };
 
-  const handleNewDataChange = () => {
+  const handleNewDataChange = async () => {
+    setLoading(true);
+    try {
+      if (newTask && jobId) {
+        const addTask = await createTask({
+          ...newTask,
+          jobId: jobId,
+        });
+        console.log(addTask);
+        alert("Successfully added new Task");
+        fetchTask(jobId);
+      }
+      setLoading(false);
+      handleCloseModal();
+    } catch (err) {
+      console.log(err);
+      setLoading(false);
+    }
+  };
 
-  }
+  const handleCloseModal = () => {
+    setNewTask({
+      detail: "",
+      height: 0,
+      jobId: "",
+      quantity: 0,
+      width: 0,
+      unit: "",
+      rate: 0,
+    });
+    setShowModal();
+  };
 
   useEffect(() => {
     if (jobId && jobId?.length > 0) {
@@ -95,11 +129,12 @@ const TodoList = ({ showModal, setShowModal }: TodoListProps) => {
           )}
           <Modal
             title="Add Task"
-            buttonAction={() => { }}
-            buttonText=""
+            buttonAction={handleNewDataChange}
+            buttonText="Save Task"
             display={showModal}
+            close={handleCloseModal}
           >
-            <TaskForm data={newTask} dataHandler={setNewTask}  />
+            <TaskForm data={newTask} dataHandler={setNewTask} />
           </Modal>
         </div>
       </div>

@@ -44,8 +44,8 @@ model Contact {
 }
 
 model Jobs {
-  id   String @id @default(uuid())
-  name String
+  id          String     @id @default(uuid())
+  name        String
   priority    Priority   @default(low)
   description String
   userId      String
@@ -67,6 +67,7 @@ model Task {
   height    Float
   rate      Float
   unit      Unit
+  quantity  Int      @default(1)
   createdAt DateTime @default(now())
   status    Status?  @default(pending)
   updatedAt DateTime @updatedAt

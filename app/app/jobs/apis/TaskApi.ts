@@ -5,8 +5,8 @@ import axios from "axios";
 const host = process.env.NEXT_PUBLIC_BACKEND_API_URL;
 console.log(host);
 
-export const createTask = async (data: TaskType[]) => {
-  const res = await axios.post(`${host}/jobs`, {
+export const createTask = async (data: TaskRequest) => {
+  const res = await axios.post(`${host}/jobs/task`, {
     ...data,
   });
   return res.data;

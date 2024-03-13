@@ -31,8 +31,8 @@ export async function POST(req: NextRequest) {
   console.log(body);
 
   try {
-    const task = await prisma.task.createMany({
-      data: [...taskList],
+    const task = await prisma.task.create({
+      data: {...taskList},
     });
     return NextResponse.json({ data: task, message: "Task Created" });
   } catch (error) {

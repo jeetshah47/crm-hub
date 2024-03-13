@@ -54,7 +54,8 @@ interface TaskType {
   detail: string;
   width: number;
   height: number;
-  unit: Unit
+  unit: Unit;
+  quantity?: number;
   createdAt?: Date;
   updatedAt?: Date;
   rate: number;

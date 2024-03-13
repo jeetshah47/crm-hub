@@ -11,4 +11,5 @@ export type TaskRequest = {
   height: number;
   unit: string;
   rate: number;
+  quantity: number;
 }
